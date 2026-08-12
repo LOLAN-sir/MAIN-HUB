@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LOLAN | Projects</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    min-height:100vh;
+    background:#07090d;
+    color:#f5f7fa;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at 15% 20%,#12324755,transparent 30%),
+        radial-gradient(circle at 85% 75%,#24205a44,transparent 30%);
+}
+
+/* NAV */
+
+nav{
+    position:relative;
+    z-index:10;
+    width:100%;
+    padding:22px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #202631;
+    background:rgba(7,9,13,.82);
+    backdrop-filter:blur(14px);
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.logo span{
+    color:#55d9ff;
+}
+
+.nav-text{
+    color:#697382;
+    font-size:13px;
+    letter-spacing:2px;
+}
+
+/* HERO */
+
+.hero{
+    position:relative;
+    z-index:1;
+    min-height:45vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 6% 40px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.tag{
+    display:inline-block;
+    padding:8px 16px;
+    border:1px solid #293441;
+    border-radius:30px;
+    color:#55d9ff;
+    font-size:12px;
+    letter-spacing:3px;
+    margin-bottom:25px;
+}
+
+h1{
+    font-size:clamp(65px,12vw,140px);
+    line-height:.9;
+    letter-spacing:-7px;
+}
+
+.hero h2{
+    margin-top:25px;
+    font-size:clamp(22px,4vw,38px);
+}
+
+.hero p{
+    margin:18px auto 0;
+    max-width:650px;
+    color:#8993a2;
+    font-size:17px;
+}
+
+/* PROJECTS */
+
+.projects{
+    position:relative;
+    z-index:1;
+    padding:30px 7% 100px;
+    max-width:1400px;
+    margin:auto;
+}
+
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+/* CARDS */
+
+.project-card{
+    position:relative;
+    min-height:430px;
+    padding:35px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    overflow:hidden;
+    border-radius:24px;
+    border:1px solid #252d38;
+    background:linear-gradient(145deg,#11151c,#090c11);
+    text-decoration:none;
+    color:white;
+    transition:.4s;
+}
+
+.project-card:hover{
+    transform:translateY(-10px);
+    border-color:#55d9ff;
+    box-shadow:0 25px 70px rgba(0,0,0,.6);
+}
+
+/* CARD GLOW */
+
+.project-card::before{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:#55d9ff22;
+    filter:blur(50px);
+    top:-80px;
+    right:-80px;
+    transition:.4s;
+}
+
+.project-card:hover::before{
+    background:#55d9ff44;
+    transform:scale(1.4);
+}
+
+/* NUMBER */
+
+.number{
+    position:absolute;
+    top:25px;
+    right:28px;
+    color:#394452;
+    font-size:14px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+/* ICON */
+
+.icon{
+    position:absolute;
+    top:45px;
+    left:35px;
+    font-size:58px;
+    filter:drop-shadow(0 0 20px #55d9ff33);
+}
+
+/* CONTENT */
+
+.card-content{
+    position:relative;
+    z-index:2;
+}
+
+.card-label{
+    color:#55d9ff;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:3px;
+    margin-bottom:10px;
+}
+
+.card-content h2{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.card-content p{
+    color:#8993a2;
+    font-size:15px;
+    max-width:340px;
+}
+
+.open{
+    display:inline-block;
+    width:max-content;
+    margin-top:25px;
+    padding:11px 17px;
+    border-radius:9px;
+    background:#fff;
+    color:#07090d;
+    font-size:12px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.project-card:hover .open{
+    transform:translateX(7px);
+}
+
+/* UPDATES CARD */
+
+.updates-card{
+    border-color:#55d9ff33;
+}
+
+/* FOOTER */
+
+footer{
+    position:relative;
+    z-index:1;
+    text-align:center;
+    padding:30px;
+    border-top:1px solid #202631;
+    color:#626d7b;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+    .project-grid{
+        grid-template-columns:1fr;
+        max-width:600px;
+        margin:auto;
+    }
+
+    .project-card{
+        min-height:330px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    nav{
+        padding:18px 5%;
+    }
+
+    .nav-text{
+        display:none;
+    }
+
+    .hero{
+        min-height:40vh;
+        padding-top:65px;
+    }
+
+    h1{
+        letter-spacing:-4px;
+    }
+
+    .projects{
+        padding-left:6%;
+        padding-right:6%;
+    }
+
+    .project-card{
+        min-height:350px;
+        padding:28px;
+    }
+
+    .icon{
+        left:28px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+
+    <div class="logo">
+        LO<span>LAN</span>
+    </div>
+
+    <div class="nav-text">
+        PERSONAL TECH HUB
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="tag">
+            WELCOME TO MY PAGE
+        </div>
+
+        <h1>LOLAN</h1>
+
+        <h2>Build. Play. Create.</h2>
+
+        <p>
+            My personal space for PC building, gaming,
+            projects and everything I'm working on.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECT CARDS -->
+
+<section class="projects">
+
+    <div class="project-grid">
+
+
+        <!-- PORTFOLIO -->
+
+        <a class="project-card"
+           href="PORTFOLIO.html">
+
+            <div class="number">
+                01
+            </div>
+
+            <div class="icon">
+                🖥️
+            </div>
+
+            <div class="card-content">
+
+                <div class="card-label">
+                    ABOUT ME
+                </div>
+
+                <h2>PORTFOLIO</h2>
+
+                <p>
+                    My PC building journey, skills, projects,
+                    gaming experience and technology interests.
+                </p>
+
+                <span class="open">
+                    OPEN PORTFOLIO →
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- GTA VI -->
+
+        <a class="project-card"
+           href="GTA-VI.html">
+
+            <div class="number">
+                02
+            </div>
+
+            <div class="icon">
+                🎮
+            </div>
+
+            <div class="card-content">
+
+                <div class="card-label">
+                    GAMING PROJECT
+                </div>
+
+                <h2>GTA-VI</h2>
+
+                <p>
+                    My GTA VI countdown project with the
+                    latest countdown experience.
+                </p>
+
+                <span class="open">
+                    OPEN GTA-VI →
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- UPDATES -->
+
+        <a class="project-card updates-card"
+           href="updates.html">
+
+            <div class="number">
+                03
+            </div>
+
+            <div class="icon">
+                🚀
+            </div>
+
+            <div class="card-content">
+
+                <div class="card-label">
+                    NEW PROJECTS
+                </div>
+
+                <h2>UPDATES</h2>
+
+                <p>
+                    New projects, experiments, websites and
+                    important things I create in the future.
+                </p>
+
+                <span class="open">
+                    VIEW UPDATES →
+                </span>
+
+            </div>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 LOLAN • PC Builder • Tech Enthusiast
+
+</footer>
+
+</body>
+</html>
