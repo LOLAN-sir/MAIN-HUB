@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>GTA VI — Release Countdown</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+      color: white;
+      background: #090909;
+    }
+
+    /* Animated background */
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(255, 50, 150, 0.35),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 80% 80%,
+          rgba(255, 170, 50, 0.25),
+          transparent 35%
+        ),
+        linear-gradient(
+          135deg,
+          #090909,
+          #210b25,
+          #080808
+        );
+
+      animation: backgroundMove 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes backgroundMove {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.08);
+      }
+    }
+
+    /* Background glow */
+    .glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+
+      border-radius: 50%;
+
+      background: rgba(255, 70, 150, 0.12);
+      filter: blur(100px);
+
+      top: -200px;
+      left: -150px;
+
+      z-index: -2;
+    }
+
+    .glow2 {
+      position: fixed;
+      width: 450px;
+      height: 450px;
+
+      border-radius: 50%;
+
+      background: rgba(255, 180, 50, 0.10);
+      filter: blur(100px);
+
+      right: -150px;
+      bottom: -150px;
+
+      z-index: -2;
+    }
+
+    /* Main */
+    .container {
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 30px;
+    }
+
+    .card {
+      width: min(1100px, 100%);
+
+      padding: 55px 45px;
+
+      text-align: center;
+
+      background: rgba(15, 15, 15, 0.65);
+
+      border: 1px solid rgba(255,255,255,0.12);
+
+      border-radius: 28px;
+
+      backdrop-filter: blur(20px);
+
+      box-shadow:
+        0 30px 100px rgba(0,0,0,0.7),
+        inset 0 1px rgba(255,255,255,0.08);
+    }
+
+    /* Logo */
+    .logo {
+      font-size: clamp(60px, 10vw, 120px);
+
+      font-weight: 900;
+
+      letter-spacing: -8px;
+
+      line-height: 1;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff3d91,
+          #ff7a45,
+          #ffd15c
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+
+      text-shadow:
+        0 10px 50px rgba(255,70,140,0.25);
+    }
+
+    .title {
+      margin-top: 15px;
+
+      font-size: 18px;
+
+      font-weight: 600;
+
+      letter-spacing: 5px;
+
+      text-transform: uppercase;
+
+      color: rgba(255,255,255,0.7);
+    }
+
+    .release-date {
+      margin-top: 12px;
+
+      font-size: 15px;
+
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* Countdown */
+    .countdown {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 18px;
+
+      margin-top: 50px;
+    }
+
+    .time-box {
+      position: relative;
+
+      padding: 28px 15px;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.08),
+          rgba(255,255,255,0.025)
+        );
+
+      border: 1px solid rgba(255,255,255,0.1);
+
+      overflow: hidden;
+
+      transition: transform 0.3s ease,
+                  border-color 0.3s ease;
+    }
+
+    .time-box:hover {
+      transform: translateY(-6px);
+
+      border-color:
+        rgba(255,100,170,0.5);
+    }
+
+    .time-box::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 15%;
+
+      width: 70%;
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #ff4f9a,
+          transparent
+        );
+    }
+
+    .number {
+      display: block;
+
+      font-size: clamp(42px, 6vw, 70px);
+
+      font-weight: 800;
+
+      letter-spacing: -2px;
+
+      color: white;
+
+      text-shadow:
+        0 0 25px rgba(255,255,255,0.15);
+    }
+
+    .label {
+      display: block;
+
+      margin-top: 8px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 3px;
+
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Progress */
+    .progress-section {
+      margin-top: 40px;
+
+      text-align: left;
+    }
+
+    .progress-info {
+      display: flex;
+
+      justify-content: space-between;
+
+      margin-bottom: 10px;
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      letter-spacing: 1px;
+
+      color: rgba(255,255,255,0.45);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 5px;
+
+      border-radius: 10px;
+
+      background: rgba(255,255,255,0.08);
+
+      overflow: hidden;
+    }
+
+    .progress {
+      width: 0%;
+
+      height: 100%;
+
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #ff3d91,
+          #ff8a45,
+          #ffd15c
+        );
+
+      box-shadow:
+        0 0 15px rgba(255,80,150,0.7);
+
+      transition: width 1s linear;
+    }
+
+    .footer {
+      margin-top: 30px;
+
+      font-size: 11px;
+
+      letter-spacing: 2px;
+
+      color: rgba(255,255,255,0.25);
+
+      text-transform: uppercase;
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+
+      .card {
+        padding: 40px 20px;
+      }
+
+      .countdown {
+        grid-template-columns:
+          repeat(2, 1fr);
+
+        gap: 12px;
+
+        margin-top: 35px;
+      }
+
+      .time-box {
+        padding: 22px 10px;
+      }
+
+      .title {
+        font-size: 13px;
+        letter-spacing: 3px;
+      }
+    }
+
+    @media (max-width: 400px) {
+
+      .logo {
+        font-size: 55px;
+      }
+
+      .number {
+        font-size: 38px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="background"></div>
+  <div class="glow"></div>
+  <div class="glow2"></div>
+
+
+  <main class="container">
+
+    <section class="card">
+
+      <div class="logo">VI</div>
+
+      <div class="title">
+        Grand Theft Auto VI
+      </div>
+
+      <div class="release-date">
+        Worldwide Release • November 19, 2026
+      </div>
+
+
+      <!-- Countdown -->
+
+      <div class="countdown" id="countdown">
+
+        <div class="time-box">
+          <span class="number" id="days">000</span>
+          <span class="label">DAYS</span>
+        </div>
+
+        <div class="time-box">
+          <span class="number" id="hours">00</span>
+          <span class="label">HOURS</span>
+        </div>
+
+        <div class="time-box">
+          <span class="number" id="minutes">00</span>
+          <span class="label">MINUTES</span>
+        </div>
+
+        <div class="time-box">
+          <span class="number" id="seconds">00</span>
+          <span class="label">SECONDS</span>
+        </div>
+
+      </div>
+
+
+      <!-- Progress -->
+
+      <div class="progress-section">
+
+        <div class="progress-info">
+          <span>RELEASE COUNTDOWN</span>
+          <span id="percent">0%</span>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress" id="progress"></div>
+        </div>
+
+      </div>
+
+
+      <div class="footer">
+        The wait is almost over
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    /*
+      GTA VI RELEASE DATE
+
+      November 19, 2026
+    */
+
+    const releaseDate =
+      new Date("November 19, 2026 00:00:00").getTime();
+
+
+    /*
+      Countdown start date.
+
+      This is used only for the progress bar.
+    */
+
+    const startDate =
+      new Date("November 19, 2025 00:00:00").getTime();
+
+
+    function updateCountdown() {
+
+      const now =
+        new Date().getTime();
+
+
+      const remaining =
+        releaseDate - now;
+
+
+      /* Release reached */
+
+      if (remaining <= 0) {
+
+        document.getElementById("countdown").style.display =
+          "none";
+
+        document.querySelector(".progress-section").style.display =
+          "none";
+
+        document.querySelector(".footer").textContent =
+          "GTA VI IS NOW AVAILABLE";
+
+        return;
+      }
+
+
+      /*
+        Calculate remaining time
+      */
+
+      const days =
+        Math.floor(
+          remaining /
+          (1000 * 60 * 60 * 24)
+        );
+
+
+      const hours =
+        Math.floor(
+          (remaining /
+          (1000 * 60 * 60)) % 24
+        );
+
+
+      const minutes =
+        Math.floor(
+          (remaining /
+          (1000 * 60)) % 60
+        );
+
+
+      const seconds =
+        Math.floor(
+          (remaining /
+          1000) % 60
+        );
+
+
+      /*
+        Display
+      */
+
+      document.getElementById("days").textContent =
+        String(days).padStart(3, "0");
+
+
+      document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+
+
+      document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+
+
+      document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+
+
+      /*
+        Progress bar
+      */
+
+      const totalTime =
+        releaseDate - startDate;
+
+
+      const elapsed =
+        now - startDate;
+
+
+      let percentage =
+        (elapsed / totalTime) * 100;
+
+
+      percentage =
+        Math.max(0, Math.min(100, percentage));
+
+
+      document.getElementById("progress").style.width =
+        percentage + "%";
+
+
+      document.getElementById("percent").textContent =
+        percentage.toFixed(2) + "%";
+    }
+
+
+    updateCountdown();
+
+
+    /*
+      Update every second
+    */
+
+    setInterval(updateCountdown, 1000);
+
+  </script>
+
+</body>
+</html>
