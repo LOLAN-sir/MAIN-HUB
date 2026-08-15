@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>LOLAN | Projects</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -126,7 +129,7 @@ h1{
 
 .project-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:24px;
 }
 
@@ -245,6 +248,28 @@ h1{
     border-color:#55d9ff33;
 }
 
+/* SECRET CARD */
+
+.secret-card{
+    border-color:#9b5cff44;
+}
+
+.secret-card::before{
+    background:#9b5cff22;
+}
+
+.secret-card:hover{
+    border-color:#9b5cff;
+}
+
+.secret-card:hover::before{
+    background:#9b5cff44;
+}
+
+.secret-card .card-label{
+    color:#b77aff;
+}
+
 /* FOOTER */
 
 footer{
@@ -255,6 +280,16 @@ footer{
     border-top:1px solid #202631;
     color:#626d7b;
     font-size:13px;
+}
+
+/* TABLET */
+
+@media(max-width:1150px){
+
+    .project-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
 }
 
 /* MOBILE */
@@ -307,7 +342,9 @@ footer{
     }
 
 }
+
 </style>
+
 </head>
 
 <body>
@@ -463,6 +500,41 @@ footer{
         </a>
 
 
+        <!-- SECRET -->
+
+        <a class="project-card secret-card"
+           href="SECRET.html">
+
+            <div class="number">
+                04
+            </div>
+
+            <div class="icon">
+                🔒
+            </div>
+
+            <div class="card-content">
+
+                <div class="card-label">
+                    CLASSIFIED
+                </div>
+
+                <h2>SECRET</h2>
+
+                <p>
+                    A hidden section of the LOLAN tech hub.
+                    Something special is waiting inside.
+                </p>
+
+                <span class="open">
+                    OPEN SECRET →
+                </span>
+
+            </div>
+
+        </a>
+
+
     </div>
 
 </section>
@@ -477,4 +549,5 @@ footer{
 </footer>
 
 </body>
+
 </html>
