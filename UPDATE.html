@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LOLAN | Updates</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    min-height:100vh;
+    background:#07090d;
+    color:#f5f7fa;
+    overflow:hidden;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            #12324755,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            #24205a44,
+            transparent 30%
+        );
+}
+
+/* NAV */
+
+nav{
+    position:relative;
+    z-index:10;
+
+    width:100%;
+    padding:22px 7%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    border-bottom:1px solid #202631;
+
+    background:rgba(7,9,13,.82);
+    backdrop-filter:blur(14px);
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.logo span{
+    color:#55d9ff;
+}
+
+.nav-text{
+    color:#697382;
+    font-size:13px;
+    letter-spacing:2px;
+}
+
+/* MAIN */
+
+main{
+    position:relative;
+    z-index:1;
+
+    min-height:calc(100vh - 76px);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    padding:40px 6%;
+}
+
+/* CONTENT */
+
+.content{
+    max-width:800px;
+}
+
+/* TAG */
+
+.tag{
+    display:inline-block;
+
+    padding:8px 16px;
+
+    border:1px solid #293441;
+    border-radius:30px;
+
+    color:#55d9ff;
+
+    font-size:12px;
+    letter-spacing:3px;
+
+    margin-bottom:30px;
+}
+
+/* TITLE */
+
+h1{
+    font-size:clamp(60px,12vw,130px);
+
+    line-height:.9;
+
+    letter-spacing:-7px;
+
+    margin-bottom:30px;
+}
+
+/* MESSAGE */
+
+p{
+    color:#8993a2;
+
+    font-size:18px;
+
+    line-height:1.7;
+
+    margin:auto;
+
+    max-width:550px;
+}
+
+/* BUTTON */
+
+.back{
+    display:inline-block;
+
+    margin-top:35px;
+
+    padding:13px 22px;
+
+    border-radius:10px;
+
+    background:#fff;
+
+    color:#07090d;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.back:hover{
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.5);
+}
+
+/* GLOW */
+
+.content::before{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    background:#55d9ff18;
+
+    filter:blur(80px);
+
+    z-index:-1;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    nav{
+        padding:18px 5%;
+    }
+
+    .nav-text{
+        display:none;
+    }
+
+    h1{
+        letter-spacing:-4px;
+    }
+
+    p{
+        font-size:16px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+
+    <div class="logo">
+        LO<span>LAN</span>
+    </div>
+
+    <div class="nav-text">
+        UPDATES
+    </div>
+
+</nav>
+
+
+<!-- MAIN -->
+
+<main>
+
+    <div class="content">
+
+        <div class="tag">
+            NEW PROJECTS
+        </div>
+
+        <h1>
+            STAY<br>TUNED!
+        </h1>
+
+        <p>
+            Something awesome is coming soon.
+            New projects, experiments and updates
+            will be added here.
+        </p>
+
+        <a class="back" href="index.html">
+            ← BACK TO HOME
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>
